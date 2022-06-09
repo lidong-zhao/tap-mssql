@@ -106,9 +106,13 @@ def row_to_singer_record(catalog_entry, version, row, columns, time_extracted):
             row_to_persist += (timedelta_from_epoch.isoformat() + "+00:00",)
 
         elif isinstance(elem, bytes):
-            # for BIT value, treat 0 as False and anything else as True
-            boolean_representation = elem != b"\x00"
-            row_to_persist += (boolean_representation,)
+            # timestamp data type
+            if len(elem) == 8:
+                row_to_persist += (elem.hex(),)
+            else:
+                # for BIT value, treat 0 as False and anything else as True
+                boolean_representation = elem != b"\x00"
+                row_to_persist += (boolean_representation,)
 
         elif "boolean" in property_type or property_type == "boolean":
             if elem is None:
