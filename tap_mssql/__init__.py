@@ -60,6 +60,7 @@ STRING_TYPES = set(
         "uniqueidentifier",
         "nvarchar",
         "nchar",
+        "timestamp"
     ]
 )
 
@@ -75,7 +76,7 @@ FLOAT_TYPES = set(["float", "double", "real"])
 
 DECIMAL_TYPES = set(["decimal", "number", "money"])
 
-DATETIME_TYPES = set(["datetime", "timestamp", "date", "time", "smalldatetime"])
+DATETIME_TYPES = set(["datetime",  "date", "time", "smalldatetime"])
 
 VARIANT_TYPES = set(["json"])
 
